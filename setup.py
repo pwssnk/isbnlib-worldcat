@@ -17,7 +17,7 @@ setup(
     entry_points = {
         'isbnlib.metadata': ['worldcat=isbnlib_worldcat:query']
     },
-    install_requires=["isbnlib>=3.9.1", "pycountry>=1.12.8", "beautifulsoup4>=4.7.1"],
+    install_requires=['isbnlib>=3.9.1', 'pycountry>=1.12.8', 'beautifulsoup4>=4.7.1'],
     license='LGPL v3',
     description='An isbnlib plugin for the WorldCat service (https://www.worldcat.org/).',
     keywords='ISBN, isbnlib, WorldCat',
