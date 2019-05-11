@@ -10,7 +10,7 @@ with open('README.md', 'r') as fh:
     long_description = fh.read()
 
 setup(
-    name='isbnlib-worldcat',
+    name='isbnlib-worldcat2',
     version='0.1.0',
     author='pwssnk',
     author_email='',

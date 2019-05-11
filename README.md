@@ -13,7 +13,7 @@ These are all available from PyPI (https://pypi.org/).
 #### 1. Using pip
 
 ```shell
-pip install isbnlib-worldcat
+pip install isbnlib-worldcat2
 ```
 Pip will automatically take care of all required dependencies.
 
