@@ -11,7 +11,7 @@ with open('README.md', 'r') as fh:
 
 setup(
     name='isbnlib-worldcat2',
-    version='0.1.0',
+    version='0.1.1',
     author='pwssnk',
     author_email='',
     url='https://github.com/pwssnk/isbnlib-worldcat',
@@ -26,8 +26,6 @@ setup(
     keywords='ISBN, isbnlib, WorldCat',
     classifiers=[
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
@@ -41,4 +39,5 @@ setup(
         'Topic :: Text Processing :: General',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
+	zip_safe=False,
 )

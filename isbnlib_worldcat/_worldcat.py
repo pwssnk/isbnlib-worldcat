@@ -93,7 +93,3 @@ def query(isbn):
 
     return _mapper(isbn, data)
 
-
-if __name__ == '__main__':
-	print('isbnlib-worldcat -- test ')
-    print(query('9781509304523'))
