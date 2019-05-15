@@ -5,6 +5,7 @@
 # https://pypi.org/project/isbnlib-dnb/ https://github.com/arangb/isbnlib-dnb
 
 import logging
+import re
 
 import bs4
 import pycountry
@@ -17,6 +18,9 @@ UA = 'isbnlib (gzip)'
 SERVICE_URL = 'https://www.worldcat.org/search?q=bn%3A{isbn}&lang={lang}'
 QUERY_LANG = 'en'
 LOGGER = logging.getLogger(__name__)
+
+_re1 = re.compile(r'(?<=[A-Z])(\s)(?![A-z]{2,})')
+_re2 = re.compile(r'(?<=[A-Z])(\s)(?=[A-z]{2,})')
 
 
 def parser_worldcat(data):
@@ -34,7 +38,13 @@ def parser_worldcat(data):
 
         # Extract list of author(s)
         raw = result.find('div', class_='author').contents[0].replace('by ', '')
-        records['Authors'] = [atr.replace(';', '') for atr in raw.split('; ')]  # Split and fix another common error
+        names = [atr.replace(';', '') for atr in raw.split('; ')]  # Split and fix another common error
+
+        def fix_punctuation(name):  # Fix missing punctuation in author initials (WorldCat issues...)
+            step = re.sub(_re1, r'.', name)
+            return re.sub(_re2, r'. ', step)
+
+        records['Authors'] = [fix_punctuation(name) for name in names]
 
         # Extract language
         langs = [i.contents[0] for i in result.find('div', class_='language').find_all('span', class_='itemLanguage')]
